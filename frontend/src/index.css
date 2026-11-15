@@ -1,0 +1,321 @@
+/*
+ * S3A — système visuel « Terre & Feuille » (repris de la maquette Lovable).
+ * Vert forêt profond, vert feuille, blanc cassé chaud ; jaune soleil, bleu ciel, tons terre.
+ * Tailwind v4 : toute la configuration est ici. Polices chargées par <link> dans index.html.
+ */
+@import 'tailwindcss';
+
+@theme inline {
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 22px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-leaf: var(--leaf);
+  --color-leaf-soft: var(--leaf-soft);
+  --color-leaf-foreground: var(--leaf-foreground);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-sky-foreground: var(--sky-foreground);
+  --color-earth: var(--earth);
+  --color-earth-soft: var(--earth-soft);
+  --color-clay: var(--clay);
+  --color-sand: var(--sand);
+  --color-silt: var(--silt);
+  --color-laterite: var(--laterite);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger-soft: var(--danger-soft);
+  --color-overlay: var(--overlay);
+  --color-stage: var(--stage);
+
+  --shadow-soft: var(--shadow-soft-v);
+  --shadow-card: var(--shadow-card-v);
+  --shadow-lift: var(--shadow-lift-v);
+  --shadow-glow: var(--shadow-glow-v);
+  --shadow-nav: var(--shadow-nav-v);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Base : blanc cassé chaud et encre forêt */
+  --background: oklch(0.975 0.012 95);
+  --foreground: oklch(0.24 0.045 160);
+  --card: oklch(0.995 0.006 95);
+  --card-foreground: oklch(0.24 0.045 160);
+
+  --primary: oklch(0.37 0.085 158);
+  --primary-foreground: oklch(0.985 0.01 95);
+  --secondary: oklch(0.94 0.035 135);
+  --secondary-foreground: oklch(0.32 0.08 155);
+  --muted: oklch(0.95 0.014 100);
+  --muted-foreground: oklch(0.5 0.03 155);
+  --accent: oklch(0.93 0.04 130);
+  --accent-foreground: oklch(0.3 0.07 155);
+  --destructive: oklch(0.58 0.19 32);
+  --destructive-foreground: oklch(0.985 0.01 95);
+  --border: oklch(0.91 0.016 100);
+  --input: oklch(0.9 0.018 100);
+  --ring: oklch(0.68 0.16 138);
+
+  /* Palette de marque */
+  --forest: oklch(0.37 0.085 158);
+  --forest-deep: oklch(0.27 0.06 162);
+  --leaf: oklch(0.74 0.18 136);
+  --leaf-soft: oklch(0.93 0.07 132);
+  --leaf-foreground: oklch(0.25 0.06 155);
+  --sun: oklch(0.88 0.14 92);
+  --sun-soft: oklch(0.96 0.05 95);
+  --sun-foreground: oklch(0.38 0.08 70);
+  --sky: oklch(0.72 0.1 232);
+  --sky-soft: oklch(0.94 0.035 230);
+  --sky-foreground: oklch(0.36 0.08 240);
+  --earth: oklch(0.55 0.1 50);
+  --earth-soft: oklch(0.93 0.03 65);
+  --warning: oklch(0.72 0.16 62);
+  --warning-soft: oklch(0.95 0.05 75);
+  --danger-soft: oklch(0.94 0.04 30);
+  --overlay: oklch(0.2 0.04 160 / 55%);
+  --stage: oklch(0.93 0.02 120);
+
+  /* Nuanciers de sol */
+  --clay: oklch(0.55 0.11 40);
+  --sand: oklch(0.84 0.07 80);
+  --silt: oklch(0.48 0.05 70);
+  --laterite: oklch(0.52 0.15 35);
+
+  /* Dégradés */
+  --gradient-forest: linear-gradient(140deg, oklch(0.42 0.1 152) 0%, oklch(0.3 0.07 162) 100%);
+  --gradient-leaf: linear-gradient(135deg, oklch(0.8 0.17 130) 0%, oklch(0.64 0.17 145) 100%);
+  --gradient-sky: linear-gradient(160deg, oklch(0.8 0.09 228) 0%, oklch(0.66 0.11 238) 100%);
+  --gradient-sun: linear-gradient(135deg, oklch(0.93 0.11 95) 0%, oklch(0.85 0.14 78) 100%);
+  --gradient-fade: linear-gradient(180deg, transparent 0%, oklch(0.2 0.05 160 / 75%) 100%);
+  --gradient-stage:
+    radial-gradient(1200px 600px at 10% 0%, oklch(0.92 0.06 130) 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 100%, oklch(0.94 0.05 90) 0%, transparent 60%), oklch(0.95 0.02 110);
+
+  /* Ombres */
+  --shadow-soft-v: 0 1px 2px oklch(0.3 0.05 160 / 6%), 0 4px 14px -4px oklch(0.3 0.05 160 / 10%);
+  --shadow-card-v: 0 2px 4px oklch(0.3 0.05 160 / 5%), 0 12px 28px -12px oklch(0.3 0.05 160 / 22%);
+  --shadow-lift-v: 0 20px 50px -18px oklch(0.27 0.06 162 / 45%);
+  --shadow-glow-v: 0 10px 30px -6px oklch(0.6 0.17 140 / 55%);
+  --shadow-nav-v: 0 -8px 30px -12px oklch(0.27 0.06 162 / 25%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--gradient-stage);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  button,
+  [role='button'],
+  a {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Surfaces et dégradés */
+@utility bg-gradient-forest {
+  background-image: var(--gradient-forest);
+}
+@utility bg-gradient-leaf {
+  background-image: var(--gradient-leaf);
+}
+@utility bg-gradient-sky {
+  background-image: var(--gradient-sky);
+}
+@utility bg-gradient-sun {
+  background-image: var(--gradient-sun);
+}
+@utility bg-gradient-fade {
+  background-image: var(--gradient-fade);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Texture « nervures de feuille » des cartes vert forêt */
+@utility texture-veins {
+  background-image:
+    radial-gradient(circle at 85% 15%, oklch(1 0 0 / 10%) 0, transparent 45%),
+    repeating-linear-gradient(115deg, oklch(1 0 0 / 3%) 0 2px, transparent 2px 14px);
+}
+
+/* Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@utility animate-fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@utility animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@utility animate-sheet-up {
+  animation: sheet-up 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@utility animate-wave {
+  animation: wave 1s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+@utility animate-pulse-ring {
+  animation: pulse-ring 1.8s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+@utility animate-scan {
+  animation: scan 1.6s linear infinite;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@utility animate-float-soft {
+  animation: float-soft 3s ease-in-out infinite;
+}
+
+@keyframes dot-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+@utility animate-dot {
+  animation: dot-bounce 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

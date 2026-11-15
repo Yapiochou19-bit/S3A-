@@ -1,0 +1,32 @@
+/** Chaînes de l'écran « Cultures » (route /recommandation). */
+export const crops = {
+  main_title: 'Culture conseillée',
+  why: 'Pourquoi ?',
+  weak_points: 'Points faibles',
+  next_title: 'Pour la saison suivante',
+  next_label: 'À planter ensuite',
+  top_title: 'Les meilleurs choix',
+  rank: (n: number) => `Choix numéro ${n}`,
+  main_star: 'Culture conseillée',
+  cover_title: 'Plantes de couverture conseillées',
+  cover_hint: 'Elles protègent le sol et le nourrissent entre deux cultures.',
+  warnings_title: 'À surveiller',
+  missing_title: 'Informations manquantes',
+  missing_link: 'Compléter ma parcelle',
+  report_title: 'Bilan de la saison',
+  report_version: (n: number) => `Version ${n}`,
+  decision_title: 'Ma décision',
+  decision_text:
+    'Tant que la décision n’est pas verrouillée, les conseils peuvent encore changer avec les nouvelles données. Verrouillez quand vous êtes prêt à planter.',
+  auto_lock: (date: string) => `Verrouillage automatique le ${date}.`,
+  lock_button: 'Verrouiller ma décision',
+  confirm_title: 'Verrouiller ma décision ?',
+  confirm_text: (crop: string, season: string) =>
+    `Vous choisissez « ${crop} » pour la saison ${season}. Après verrouillage, plus aucun recalcul n’est possible pour cette saison.`,
+  confirm_yes: 'Oui, verrouiller',
+  locking: 'Verrouillage…',
+  lock_success: 'Décision verrouillée',
+  locked_title: 'Décision verrouillée',
+  locked_on: (date: string) => `Verrouillée le ${date}.`,
+  locked_text: 'Les conseils de cette saison ne changent plus.',
+} as const;
